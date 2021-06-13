@@ -72,6 +72,7 @@ jobs:
     - name: Commit any changes
       uses: EndBug/add-and-commit@v7
       with:
+        branch: master
         default_author: github_actions
         message: "maint ~ refresh 'Cargo.lock'"
         add: Cargo.lock
@@ -119,6 +120,7 @@ jobs:
     - name: Commit any changes
       uses: EndBug/add-and-commit@v7
       with:
+        branch: master
         default_author: github_actions
         message: "maint ~ rustfmt (`cargo fmt`)"
       env:
