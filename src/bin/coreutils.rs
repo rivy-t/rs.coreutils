@@ -3,7 +3,7 @@
 // (c) Michael Gehring <mg@ebfe.org>
 //
 // For the full copyright and license information, please view the LICENSE
-// file that was distributed with this source code.
+// file that was distributed with this source coderx.
 
 use std::cmp;
 use std::collections::hash_map::HashMap;
