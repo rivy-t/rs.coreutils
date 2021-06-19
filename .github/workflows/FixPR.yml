@@ -11,7 +11,7 @@ on:
   pull_request:
     branches:
       - master
-    # types: [ closed ]
+    types: [ closed ]
 
 jobs:
   code_deps:
