@@ -10,7 +10,7 @@ on:
   # ref: https://github.community/t/trigger-workflow-only-on-pull-request-merge/17359/9
   pull_request:
     branches:
-      - master
+      - ${{ env.BRANCH_TARGET }}
     types: [ closed ]
 
 jobs:
