@@ -8,15 +8,15 @@ env:
 on:
   # * only trigger on pull request closed to specific branches
   # ref: https://github.community/t/trigger-workflow-only-on-pull-request-merge/17359/9
-  pull_request:
-    branches:
-      - ${{ env.BRANCH_TARGET }}
-    types: [ closed ]
+  pull_request #:
+    # branches:
+    #   - ${{ env.BRANCH_TARGET }}
+    # types: [ closed ]
 
 jobs:
   code_deps:
     # Refresh dependencies (ie, 'Cargo.lock') and show updated dependency tree
-    if: github.event.pull_request.merged == true ## only for PR merges
+    if: github.event.pull_request.merged == true && github.base_ref == '${{ env.BRANCH_TARGET }}' ## only for PR merges to target
     name: Update/dependencies
     runs-on: ${{ matrix.job.os }}
     strategy:
