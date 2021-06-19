@@ -16,7 +16,7 @@ on:
 jobs:
   code_deps:
     # Refresh dependencies (ie, 'Cargo.lock') and show updated dependency tree
-    if: ${{ github.event.pull_request.merged == true }} && ${{ github.base_ref == env.BRANCH_TARGET }} ## only for PR merges to target
+    if: ${{ github.event.pull_request.merged == true && github.base_ref == env.BRANCH_TARGET }} ## only for PR merges to target
     name: Update/dependencies
     runs-on: ${{ matrix.job.os }}
     strategy:
