@@ -547,8 +547,9 @@ jobs:
         run: |
           # Need to be run in the same block. Otherwise, we are back on the mac host.
           set -e
+          REPO_NAME=${GITHUB_WORKSPACE##*/}
           pw adduser -n cuuser -d /root/ -g wheel -c "Coreutils user to build" -w random
-          chown -R cuuser:wheel /root/ /Users/runner/work/coreutils/
+          chown -R cuuser:wheel /root/ /Users/runner/work/${REPO_NAME}/
           whoami
 
           # Needs to be done in a sudo as we are changing users
@@ -568,14 +569,13 @@ jobs:
           rustc -V
           env
 
-          # where the files are resynced
-          cd /Users/runner/work/coreutils/coreutils/
+          # where the files are re-synced
+          cd /Users/runner/work/${REPO_NAME}/${REPO_NAME}/
           cargo build
           cargo test --features feat_os_unix -p uucore -p coreutils
           # Clean to avoid to rsync back the files
           cargo clean
           EOF
-
 
   coverage:
     name: Code Coverage
